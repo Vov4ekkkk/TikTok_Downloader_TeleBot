@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ресторан "Delicious"</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <style>
+        /* Фон зі змінними зображеннями */
+        .bg-slider {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .slide.active { opacity: 1; }
+        
+        /* Стилізація меню */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .item:hover { transform: scale(1.05); }
+        .item img { width: 100%; border-radius: 10px; }
+        
+        /* Відгуки у форматі карток */
+        .reviews-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+        .review-card {
+            flex: 0 0 300px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🍽️ Delicious</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">Про нас</a></li>
+                <li><a href="#menu">Меню</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#reviews">Відгуки</a></li>
+                <li><a href="#reservation">Бронювання</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="bg-slider">
+            <div class="slide active" style="background-image: url('images/bg1.jpg');"></div>
+            <div class="slide" style="background-image: url('images/bg2.png');"></div>
+            <div class="slide" style="background-image: url('images/bg3.jpg');"></div>
+        </div>
+        <div class="overlay"></div>
+        <h1>Ласкаво просимо до "Delicious"</h1>
+        <p>Найкраща кухня у вашому місті</p>
+        <a href="#menu" class="btn">Переглянути меню</a>
+    </section>
+
+    <main id="content">
+        <section id="menu" class="page">
+            <h2>Популярне зараз</h2>
+            <div class="menu-items">
+                <div class="item"><img src="images/dish1.jpg" alt="Страва 1"><p>Салат Цезар - 200 грн</p></div>
+                <div class="item"><img src="images/dish2.jpg" alt="Страва 2"><p>Бургер "Deluxe" - 250 грн</p></div>
+                <div class="item"><img src="images/dish3.jpg" alt="Страва 3"><p>Стейк Рибай - 450 грн</p></div>
+                <div class="item"><img src="images/dish4.jpg" alt="Страва 4"><p>Тірамісу - 150 грн</p></div>
+            </div>
+        </section>
+
+        <section id="reservation" class="page">
+            <h2>Забронюйте столик</h2>
+            <form action="reserve.php" method="POST">
+                <input type="text" name="name" placeholder="Ваше ім'я" required>
+                <input type="email" name="email" placeholder="Ваш email" required>
+                <input type="date" name="date" required>
+                <input type="time" name="time" required>
+                <button type="submit">Бронювати</button>
+            </form>
+        </section>
+    
+        <section id="reviews" class="page">
+            <h2>Відгуки клієнтів</h2>
+            <div class="reviews-container">
+                <div class="review-card">
+                    <p>"Неймовірно смачно! Обов'язково повернуся знову."</p>
+                    <span>- Олександр</span>
+                </div>
+                <div class="review-card">
+                    <p>"Кращий сервіс і атмосфера!"</p>
+                    <span>- Марія</span>
+                </div>
+                <div class="review-card">
+                    <p>"Справжній гастрономічний рай. Рекомендую всім!"</p>
+                    <span>- Андрій</span>
+                </div>
+                <div class="review-card">
+                    <p>"Обожнюю це місце, завжди свіжа їжа і приємний персонал."</p>
+                    <span>- Наталія</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Ресторан "Delicious". Усі права захищені.</p>
+    </footer>
+    </body>
+    </html>
+
